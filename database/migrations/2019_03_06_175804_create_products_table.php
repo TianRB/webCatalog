@@ -77,6 +77,7 @@ class CreateProductsTable extends Migration
     // Eliminar imagenes del modelo
     $file = new Filesystem;
     $file->cleanDirectory('public/img/products/'); // Products
+    fopen(PUBLIC_PATH().'/img/products/.gitignore', "w"); // Crea un archivo .gitignore para que git no elimine la carpeta
 
   }
 }
