@@ -8,6 +8,9 @@ class Product extends Model
 {
 	protected $fillable = ['display_name', 'description', 'sugested_price'];
 
+	public function pics() {
+		return $this->hasMany('App\Pic');
+	}
 	public function tags(){
 		return $this->belongsToMany('App\Tag');
 	}

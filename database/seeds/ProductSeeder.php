@@ -18,8 +18,11 @@ class ProductSeeder extends Seeder
       for ($i=0; $i < rand(1, 5); $i++) { // Agrega de 1 a 5
         $product->categories()->sync(App\Category::all()->random(), false); // Categorias
       }
-      for ($i=0; $i < rand(1, 3); $i++) { // Agrega de 1 a 3
+      for ($i=0; $i < rand(0, 3); $i++) { // Agrega de 0 a 3
         $product->tags()->sync(App\Tag::all()->random(), false); // Tags
+      }
+      for ($i=0; $i < rand(0, 12); $i++) { // Agrega de 0 a 12
+        $product->pics()->save(factory(App\Pic::class)->make()); // Imagenes generales
       }
     });
   }

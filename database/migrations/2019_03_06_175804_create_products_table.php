@@ -18,9 +18,18 @@ class CreateProductsTable extends Migration
       $table->increments('id');
       $table->string('name');
       $table->string('display_name');
+      $table->string('img');
       $table->longText('description')->nullable();
       $table->float('sugested_price', 12, 2);
       $table->boolean('available');
+      $table->timestamps();
+    });
+    // Tabla de imagenes adicionales para productos
+    Schema::create('pics', function (Blueprint $table) {
+      $table->increments('id');
+      $table->integer('product_id')->unsigned();
+      $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+      $table->string('path');
       $table->timestamps();
     });
     Schema::create('categories', function (Blueprint $table) {
@@ -60,6 +69,7 @@ class CreateProductsTable extends Migration
   {
     Schema::dropIfExists('category_product');
     Schema::dropIfExists('product_tag');
+    Schema::dropIfExists('pics');
     Schema::dropIfExists('products');
     Schema::dropIfExists('categories');
     Schema::dropIfExists('tags');
