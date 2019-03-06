@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 	protected $fillable = ['display_name', 'description', 'sugested_price'];
+	public static $image_path = 'img/products/'; // Donde guardar imagenes
 
 	public function pics() {
 		return $this->hasMany('App\Pic');
