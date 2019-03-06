@@ -74,9 +74,8 @@ class CreateProductsTable extends Migration
     Schema::dropIfExists('categories');
     Schema::dropIfExists('tags');
 
-    // Eliminar imagenes del modelo
     $file = new Filesystem;
-    $file->cleanDirectory('public/img/products/'); // Products
+    $file->cleanDirectory('public/img/products/'); // Eliminar imagenes del modelo
     fopen(PUBLIC_PATH().'/img/products/.gitignore', "w"); // Crea un archivo .gitignore para que git no elimine la carpeta
 
   }
